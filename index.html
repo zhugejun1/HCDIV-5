@@ -1,238 +1,290 @@
-<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Urban Lifestyle Data: Distribution of Early Birds vs Night Owls</title>
-        <script src="https://cdn.tailwindcss.com"></script>
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        <style>
-            #map { height: 50vh; width: 100%; }
-            .chart-container { position: relative; height: 200px; }
-            .info-popup { font-size: 14px; line-height: 1.6; }
-        </style>
-    </head>
-    <body class="bg-gray-100">
-        <div class="container mx-auto p-4">
-            <!-- Sleep Patterns Overview -->
-            <div class="bg-white rounded-lg shadow-lg p-4 mb-4">
-                <h1 class="text-2xl font-bold mb-4">Urban Lifestyle Data: Distribution of Early Birds vs Night Owls</h1>
-                <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
-                    <div class="p-4 bg-gray-50 rounded-lg">
-                        <h3 class="font-bold text-lg mb-2">Tokyo</h3>
-                        <div class="chart-container">
-                            <canvas id="tokyoChart"></canvas>
-                        </div>
-                        <p class="mt-2 text-sm">
-                            <span class="font-semibold">Early Birds:</span> 45% (Office workers & students)<br>
-                            <span class="font-semibold">Night Owls:</span> 35% (Night economy)<br>
-                            <span class="font-semibold">Others:</span> 20% (Irregular patterns)
-                        </p>
-                    </div>
-                    <div class="p-4 bg-gray-50 rounded-lg">
-                        <h3 class="font-bold text-lg mb-2">Seoul</h3>
-                        <div class="chart-container">
-                            <canvas id="seoulChart"></canvas>
-                        </div>
-                        <p class="mt-2 text-sm">
-                            <span class="font-semibold">Early Birds:</span> 40% (Work culture)<br>
-                            <span class="font-semibold">Night Owls:</span> 40% (Nightlife)<br>
-                            <span class="font-semibold">Others:</span> 20% (Neutral patterns)
-                        </p>
-                    </div>
-                    <div class="p-4 bg-gray-50 rounded-lg">
-                        <h3 class="font-bold text-lg mb-2">Shanghai</h3>
-                        <div class="chart-container">
-                            <canvas id="shanghaiChart"></canvas>
-                        </div>
-                        <p class="mt-2 text-sm">
-                            <span class="font-semibold">Early Birds:</span> 50% (Strict work system)<br>
-                            <span class="font-semibold">Night Owls:</span> 30% (Night economy)<br>
-                            <span class="font-semibold">Others:</span> 20% (Flexible patterns)
-                        </p>
-                    </div>
-                    <div class="p-4 bg-gray-50 rounded-lg">
-                        <h3 class="font-bold text-lg mb-2">Beijing</h3>
-                        <div class="chart-container">
-                            <canvas id="beijingChart"></canvas>
-                        </div>
-                        <p class="mt-2 text-sm">
-                            <span class="font-semibold">Early Birds:</span> 55% (Commute culture)<br>
-                            <span class="font-semibold">Night Owls:</span> 25% (Conservative nightlife)<br>
-                            <span class="font-semibold">Others:</span> 20% (No clear pattern)
-                        </p>
-                    </div>
-                    <div class="p-4 bg-gray-50 rounded-lg">
-                        <h3 class="font-bold text-lg mb-2">Singapore</h3>
-                        <div class="chart-container">
-                            <canvas id="singaporeChart"></canvas>
-                        </div>
-                        <p class="mt-2 text-sm">
-                            <span class="font-semibold">Early Birds:</span> 35% (Flexible work)<br>
-                            <span class="font-semibold">Night Owls:</span> 35% (International lifestyle)<br>
-                            <span class="font-semibold">Others:</span> 30% (Balanced rhythm)
-                        </p>
-                    </div>
-                </div>
-            </div>
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>Traffic Congestion Data Analysis of Chinese Cities</title>  
+    <script src="https://cdn.tailwindcss.com"></script>  
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />  
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>  
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>  
+    <style>  
+        #map { height: 50vh; width: 100%; }  
+        .chart-container { position: relative; height: 200px; }  
+        .info-popup { font-size: 14px; line-height: 1.6; }  
+    </style>  
+</head>  
+<body class="bg-gray-100">  
+    <div class="container mx-auto p-4">  
+        <!-- Main Data Overview -->  
+        <div class="bg-white rounded-lg shadow-lg p-4 mb-4">  
+            <h1 class="text-2xl font-bold mb-4">Traffic Congestion Data Analysis of Chinese Cities</h1>  
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">  
+                <div class="p-4 bg-gray-50 rounded-lg">  
+                    <h3 class="font-bold text-lg mb-2">Dongguan</h3>  
+                    <div class="chart-container">  
+                        <canvas id="dongguanChart"></canvas>  
+                    </div>  
+                    <p class="mt-2 text-sm">  
+                        <span class="font-semibold">Oversaturation Probability:</span> 12.13%<br>  
+                        <span class="font-semibold">Weighted Delay Time:</span> 193.02s  
+                    </p>  
+                </div>  
+                <div class="p-4 bg-gray-50 rounded-lg">  
+                    <h3 class="font-bold text-lg mb-2">Foshan</h3>  
+                    <div class="chart-container">  
+                        <canvas id="foshanChart"></canvas>  
+                    </div>  
+                    <p class="mt-2 text-sm">  
+                        <span class="font-semibold">Oversaturation Probability:</span> 10.96%<br>  
+                        <span class="font-semibold">Weighted Delay Time:</span> 183.37s  
+                    </p>  
+                </div>  
+                <div class="p-4 bg-gray-50 rounded-lg">  
+                    <h3 class="font-bold text-lg mb-2">Luzhou</h3>  
+                    <div class="chart-container">  
+                        <canvas id="luzhouChart"></canvas>  
+                    </div>  
+                    <p class="mt-2 text-sm">  
+                        <span class="font-semibold">Oversaturation Probability:</span> 10.74%<br>  
+                        <span class="font-semibold">Weighted Delay Time:</span> 185.56s  
+                    </p>  
+                </div>  
+                <div class="p-4 bg-gray-50 rounded-lg">  
+                    <h3 class="font-bold text-lg mb-2">Meizhou</h3>  
+                    <div class="chart-container">  
+                        <canvas id="meizhouChart"></canvas>  
+                    </div>  
+                    <p class="mt-2 text-sm">  
+                        <span class="font-semibold">Oversaturation Probability:</span> 10.47%<br>  
+                        <span class="font-semibold">Weighted Delay Time:</span> 148.53s  
+                    </p>  
+                </div>  
+                <div class="p-4 bg-gray-50 rounded-lg">  
+                    <h3 class="font-bold text-lg mb-2">Boyi</h3>  
+                    <div class="chart-container">  
+                        <canvas id="boyiChart"></canvas>  
+                    </div>  
+                    <p class="mt-2 text-sm">  
+                        <span class="font-semibold">Oversaturation Probability:</span> 8.79%<br>  
+                        <span class="font-semibold">Weighted Delay Time:</span> 134.41s  
+                    </p>  
+                </div>  
+            </div>  
+        </div>  
 
-            <!-- Key Findings -->
-            <div class="bg-white rounded-lg shadow-lg p-4 mb-4">
-                <h2 class="text-xl font-bold mb-3">Key Findings</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div class="p-4 bg-blue-50 rounded-lg">
-                        <h3 class="font-bold mb-2">Work Culture Impact</h3>
-                        <ul class="list-disc pl-5 space-y-2">
-                            <li>Beijing & Shanghai show highest early riser rates (55% & 50%)</li>
-                            <li>Reflects strict Chinese work culture</li>
-                            <li>Singapore shows most balanced distribution</li>
-                        </ul>
-                    </div>
-                    <div class="p-4 bg-purple-50 rounded-lg">
-                        <h3 class="font-bold mb-2">Night Economy</h3>
-                        <ul class="list-disc pl-5 space-y-2">
-                            <li>Tokyo & Seoul lead in night owl population (35-40%)</li>
-                            <li>Strong correlation with developed night economies</li>
-                            <li>Singapore maintains balanced nightlife under regulations</li>
-                        </ul>
-                    </div>
-                    <div class="p-4 bg-green-50 rounded-lg">
-                        <h3 class="font-bold mb-2">Urban Characteristics</h3>
-                        <ul class="list-disc pl-5 space-y-2">
-                            <li>Higher population density correlates with early risers</li>
-                            <li>International cities show more diverse sleep patterns</li>
-                            <li>Public transport efficiency influences wake times</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <!-- City Comparison Chart -->  
+        <div class="bg-white rounded-lg shadow-lg p-4 mb-4">  
+            <h2 class="text-xl font-bold mb-3">City Comparison</h2>  
+            <div class="chart-container" style="height: 300px;">  
+                <canvas id="comparisonChart"></canvas>  
+            </div>  
+        </div>  
 
-            <!-- Map Section -->
-            <div class="bg-white rounded-lg shadow-lg p-4">
-                <h2 class="text-xl font-bold mb-3">Geographic Distribution</h2>
-                <div id="map"></div>
-            </div>
-        </div>
+        <!-- Key Findings -->  
+        <div class="bg-white rounded-lg shadow-lg p-4 mb-4">  
+            <h2 class="text-xl font-bold mb-3">Key Findings</h2>  
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">  
+                <div class="p-4 bg-blue-50 rounded-lg">  
+                    <h3 class="font-bold mb-2">Congestion Level</h3>  
+                    <ul class="list-disc pl-5 space-y-2">  
+                        <li>Dongguan has the highest congestion probability (12.13%)</li>  
+                        <li>All top five cities exceed an 8.5% congestion probability</li>  
+                        <li>All cities have average delay times over 120 seconds</li>  
+                    </ul>  
+                </div>  
+                <div class="p-4 bg-purple-50 rounded-lg">  
+                    <h3 class="font-bold mb-2">Regional Distribution</h3>  
+                    <ul class="list-disc pl-5 space-y-2">  
+                        <li>Cities in Guangdong Province have high congestion levels</li>  
+                        <li>Eastern coastal cities show significant congestion</li>  
+                        <li>Economically developed areas have higher congestion levels</li>  
+                    </ul>  
+                </div>  
+                <div class="p-4 bg-green-50 rounded-lg">  
+                    <h3 class="font-bold mb-2">Trend Characteristics</h3>  
+                    <ul class="list-disc pl-5 space-y-2">  
+                        <li>Congestion probability correlates with delay time</li>  
+                        <li>City size affects traffic conditions</li>  
+                        <li>Industrial areas show severe congestion</li>  
+                    </ul>  
+                </div>  
+            </div>  
+        </div>  
 
-        <script>
-            // Chart configuration
-            const createChart = (elementId, data, labels) => {
-                const ctx = document.getElementById(elementId).getContext('2d');
-                return new Chart(ctx, {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Early Birds', 'Night Owls', 'Others'],
-                        datasets: [{
-                            data: data,
-                            backgroundColor: [
-                                '#60a5fa',
-                                '#818cf8',
-                                '#c084fc'
-                            ]
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        plugins: {
-                            legend: {
-                                position: 'bottom',
-                                labels: {
-                                    font: {
-                                        size: 10
-                                    }
-                                }
-                            }
-                        }
-                    }
-                });
-            };
+        <!-- Map Section -->  
+        <div class="bg-white rounded-lg shadow-lg p-4">  
+            <h2 class="text-xl font-bold mb-3">Geographic Distribution</h2>  
+            <div id="map"></div>  
+        </div>  
+    </div>  
 
-            // Create charts for each city
-            createChart('tokyoChart', [45, 35, 20]);
-            createChart('seoulChart', [40, 40, 20]);
-            createChart('shanghaiChart', [50, 30, 20]);
-            createChart('beijingChart', [55, 25, 20]);
-            createChart('singaporeChart', [35, 35, 30]);
+    <script>  
+        // Individual city charts  
+        const createChart = (elementId, congestionData, delayData) => {  
+            const ctx = document.getElementById(elementId).getContext('2d');  
+            return new Chart(ctx, {  
+                type: 'bar',  
+                data: {  
+                    labels: ['Congestion Rate (%)', 'Delay Time (s)'],  
+                    datasets: [{  
+                        data: [congestionData, delayData],  
+                        backgroundColor: [  
+                            'rgba(54, 162, 235, 0.8)',  
+                            'rgba(75, 192, 192, 0.8)'  
+                        ],  
+                        borderColor: [  
+                            'rgba(54, 162, 235, 1)',  
+                            'rgba(75, 192, 192, 1)'  
+                        ],  
+                        borderWidth: 1  
+                    }]  
+                },  
+                options: {  
+                    responsive: true,  
+                    maintainAspectRatio: false,  
+                    scales: {  
+                        y: {  
+                            beginAtZero: true,  
+                            title: {  
+                                display: true,  
+                                text: 'Value'  
+                            }  
+                        }  
+                    },  
+                    plugins: {  
+                        legend: {  
+                            display: false  
+                        },  
+                        tooltip: {  
+                            callbacks: {  
+                                label: function(context) {  
+                                    if (context.dataIndex === 0) {  
+                                        return `Congestion Rate: ${context.raw}%`;  
+                                    } else {  
+                                        return `Delay Time: ${context.raw}s`;  
+                                    }  
+                                }  
+                            }  
+                        }  
+                    }  
+                }  
+            });  
+        };  
 
-            // Initialize map
-            const map = L.map('map').setView([34.0479, 100.6197], 4);
-            L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {
-                maxZoom: 18,
-                attribution: '© OpenStreetMap contributors'
-            }).addTo(map);
+        // Create individual charts  
+        createChart('dongguanChart', 12.13, 193.02);  
+        createChart('foshanChart', 10.96, 183.37);  
+        createChart('luzhouChart', 10.74, 185.56);  
+        createChart('meizhouChart', 10.47, 148.53);  
+        createChart('boyiChart', 8.79, 134.41);  
 
-            const asiaBounds = L.latLngBounds([5.0, 60.0], [55.0, 150.0]);
-            map.setMaxBounds(asiaBounds);
-            map.setMinZoom(3);
-            map.fitBounds(asiaBounds);
+        // Comparison chart  
+        const comparisonCtx = document.getElementById('comparisonChart').getContext('2d');  
+        new Chart(comparisonCtx, {  
+            type: 'bar',  
+            data: {  
+                labels: ['Dongguan', 'Foshan', 'Luzhou', 'Meizhou', 'Boyi'],  
+                datasets: [{  
+                    label: 'Congestion Rate (%)',  
+                    data: [12.13, 10.96, 10.74, 10.47, 8.79],  
+                    backgroundColor: 'rgba(54, 162, 235, 0.8)',  
+                    borderColor: 'rgba(54, 162, 235, 1)',  
+                    borderWidth: 1  
+                },  
+                {  
+                    label: 'Delay Time (s)',  
+                    data: [193.02, 183.37, 185.56, 148.53, 134.41],  
+                    backgroundColor: 'rgba(75, 192, 192, 0.8)',  
+                    borderColor: 'rgba(75, 192, 192, 1)',  
+                    borderWidth: 1  
+                }]  
+            },  
+            options: {  
+                responsive: true,  
+                maintainAspectRatio: false,  
+                scales: {  
+                    y: {  
+                        beginAtZero: true,  
+                        title: {  
+                            display: true,  
+                            text: 'Value'  
+                        }  
+                    }  
+                },  
+                plugins: {  
+                    legend: {  
+                        position: 'top'  
+                    }  
+                }  
+            }  
+        });  
 
-            // City data
-            const cityData = [
-                {
-                    name: 'Shanghai',
-                    lat: 31.2304,
-                    lon: 121.4737,
-                    earlyBirds: '50%',
-                    nightOwls: '30%',
-                    others: '20%',
-                    notes: 'Strict work culture, developing night economy'
-                },
-                {
-                    name: 'Tokyo',
-                    lat: 35.6895,
-                    lon: 139.6917,
-                    earlyBirds: '45%',
-                    nightOwls: '35%',
-                    others: '20%',
-                    notes: 'Balance of work culture and night economy'
-                },
-                {
-                    name: 'Singapore',
-                    lat: 1.3521,
-                    lon: 103.8198,
-                    earlyBirds: '35%',
-                    nightOwls: '35%',
-                    others: '30%',
-                    notes: 'Most balanced distribution, international influence'
-                },
-                {
-                    name: 'Seoul',
-                    lat: 37.5665,
-                    lon: 126.9780,
-                    earlyBirds: '40%',
-                    nightOwls: '40%',
-                    others: '20%',
-                    notes: 'Strong nightlife culture, work-life balance'
-                },
-                {
-                    name: 'Beijing',
-                    lat: 39.9042,
-                    lon: 116.4074,
-                    earlyBirds: '55%',
-                    nightOwls: '25%',
-                    others: '20%',
-                    notes: 'Highest early riser percentage, commute influence'
-                }
-            ];
+        // Initialize map  
+        const map = L.map('map').setView([23.0, 113.75], 6);  
+        L.tileLayer('https://{s}.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png', {  
+            maxZoom: 18,  
+            attribution: '© OpenStreetMap contributors'  
+        }).addTo(map);  
 
-            // Add markers
-            cityData.forEach(city => {
-                const marker = L.marker([city.lat, city.lon]).addTo(map);
-                marker.bindPopup(`
-                    <div class="info-popup">
-                        <h3 class="font-bold text-lg mb-2">${city.name}</h3>
-                        <div class="grid gap-2">
-                            <div><strong>Early Birds:</strong> ${city.earlyBirds}</div>
-                            <div><strong>Night Owls:</strong> ${city.nightOwls}</div>
-                            <div><strong>Others:</strong> ${city.others}</div>
-                            <div><strong>Key Characteristics:</strong><br>${city.notes}</div>
-                        </div>
-                    </div>
-                `, { maxWidth: 300 });
-            });
-        </script>
-    </body>
-    </html>
+        // City data  
+        const cityData = [  
+            {  
+                name: 'Dongguan',  
+                lat: 23.0208,  
+                lon: 113.7518,  
+                congestion: '12.13%',  
+                delay: '193.02 seconds',  
+                notes: 'Highest congestion level'  
+            },  
+            {  
+                name: 'Foshan',  
+                lat: 23.0218,  
+                lon: 113.1218,  
+                congestion: '10.96%',  
+                delay: '183.37 seconds',  
+                notes: 'Second highest congestion level'  
+            },  
+            {  
+                name: 'Luzhou',  
+                lat: 28.8666,  
+                lon: 105.4415,  
+                congestion: '10.74%',  
+                delay: '185.56 seconds',  
+                notes: 'Significant congestion issues'  
+            },  
+            {  
+                name: 'Meizhou',  
+                lat: 24.2992,  
+                lon: 116.1162,  
+                congestion: '10.47%',  
+                delay: '148.53 seconds',  
+                notes: 'Regular traffic congestion'  
+            },  
+            {  
+                name: 'Boyi',  
+                lat: 23.7283,  
+                lon: 113.6360,  
+                congestion: '8.79%',  
+                delay: '134.41 seconds',  
+                notes: 'Lower congestion level'  
+            }  
+        ];  
+
+        // Add markers to map  
+        cityData.forEach(city => {  
+            const marker = L.marker([city.lat, city.lon]).addTo(map);  
+            marker.bindPopup(`  
+                <div class="info-popup">  
+                    <h3 class="font-bold text-lg mb-2">${city.name}</h3>  
+                    <div class="grid gap-2">  
+                        <div><strong>Congestion Rate:</strong> ${city.congestion}</div>  
+                        <div><strong>Delay Time:</strong> ${city.delay}</div>  
+                        <div><strong>Notes:</strong><br>${city.notes}</div>  
+                    </div>  
+                </div>  
+            `, { maxWidth: 300 });  
+        });  
+    </script>  
+</body>  
+</html>
